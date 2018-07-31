@@ -1,11 +1,13 @@
 {
   "name": "react-shared-services",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/index.js",
   "repository": "https://github.com/cdellinger/react-shared-services.git",
   "author": "Chris Dellinger <cdellinger@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^1.4.2",
+    "@material-ui/icons": "^2.0.0",
     "react": "^16.4.1"
   },
   "devDependencies": {
@@ -15,7 +17,7 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "scripts": {
-   "build": "babel src -d build",
-   "prepare": "yarn run build"
-  }  
+    "build": "babel src -d build",
+    "prepare": "yarn run build"
+  }
 }
