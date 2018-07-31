@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom'
-import Spinner from '../components/spinner';
+import Spinner from './spinner';
 import PageLevelMessage from './page-level-message';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
