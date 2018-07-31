@@ -1,9 +1,10 @@
 import Amplify from '@aws-amplify/core';
 import Auth from '@aws-amplify/auth';
 
-class Authentication {
+export default class Authentication {
 
   constructor(){
+    console.log('inside constructor of Authentication class');
     //nothing at the moment
   }
 
@@ -66,5 +67,3 @@ class Authentication {
       .catch(err => alert(err));
   }
 }
-
-export default Authentication;  
