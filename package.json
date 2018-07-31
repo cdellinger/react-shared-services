@@ -1,0 +1,17 @@
+{
+  "name": "react-shared-services",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "repository": "https://github.com/cdellinger/react-shared-services.git",
+  "author": "Chris Dellinger <cdellinger@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
