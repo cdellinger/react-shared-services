@@ -1,4 +1,8 @@
 //src/index.js
+
+//logic
+export {default as Authentication} from './authentication';
+
 //components
 export {default as PageLevelMessage} from './ui/page-level-message';
 export {default as Spinner} from './ui/spinner';
