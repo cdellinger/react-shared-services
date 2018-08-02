@@ -1,13 +1,14 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom'
 import Spinner from './spinner';
-import PageLevelMessage from './page-level-message';
+import PageLevelMessage from './page_level_message';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Authentication from '../authentication.js';
 
 class LoginPage extends React.Component {
 
@@ -48,9 +49,10 @@ class LoginPage extends React.Component {
     }
     else{
       self.setState({showSpinner: true});
-      self.props.onLogin(self.state.user.userName, self.state.user.password, function(err, response){
+      Authentication.login(self.state.user.userName, self.state.user.password, function(err, response){
         if(err === null){
-          self.setState({redirectToReferrer: true, showSpinner: false});        
+          self.setState({redirectToReferrer: true, showSpinner: false});
+          self.props.onLogin();
         }
         else{
           //let loginErrors = {};

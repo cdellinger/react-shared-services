@@ -1,33 +1,25 @@
 import Amplify from '@aws-amplify/core';
 import Auth from '@aws-amplify/auth';
 
-export default class Authentication {
+class Authentication {
 
-  constructor(){
-    console.log('inside constructor of Authentication class');
-    //nothing at the moment
-  }
-
-  configure(aws_exports){
+  static configure(aws_exports){
     Amplify.configure(aws_exports);
   }
 
-  login(userId, password, cb){
-    //const self = this;
+
+  static login(userId, password, cb){
     Auth.signIn(userId, password)
       .then(user => {
-        //self.setState({loggedIn: true});
-        return cb(null);
+        return cb(null, user);
       })
       .catch(err =>{
-        console.log(err);
-        //self.setState({loggedIn: false});
         return cb(err);
       });
   }
 
 
-  confirm(userName, confirmationCode, cb){
+  static confirm(userName, confirmationCode, cb){
     Auth.confirmSignUp(userName, confirmationCode)
       .then(data => {
         return cb(null, data);
@@ -37,7 +29,17 @@ export default class Authentication {
       });
   }
 
-  join(userName, password, email, cb){
+  static getCurrentUser(cb){
+    Auth.currentAuthenticatedUser()
+      .then(user => {
+        return cb(null, user);
+      })
+      .catch(err => {
+        return cb(err, null);
+      });
+  }
+
+  static join(userName, password, email, cb){
       Auth.signUp({username: userName, password: password, attributes: {email: email}})
         .then(data => {
             return cb(null, data);
@@ -47,7 +49,7 @@ export default class Authentication {
         });
 
   }
-  resendConfirmationCode(userName, cb){
+  static resendConfirmationCode(userName, cb){
       Auth.resendSignUp(userName)
         .then(data => {
           return cb(null, data);
@@ -57,13 +59,14 @@ export default class Authentication {
         });
   }
 
-  logout(){
-    //const self = this;
+  static logout(cb){
     Auth.signOut()
       .then(data => {
-        window.location.href = '/';
-        //self.setState({loggedIn: false, redirectToHomePage: true})
+        return cb(null);
       })
-      .catch(err => alert(err));
+      .catch(err => {
+        return cb(err);
+      })
   }
 }
+export default Authentication;
