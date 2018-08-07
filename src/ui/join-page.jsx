@@ -8,6 +8,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import PageLevelMessage from './page-level-message';
+import Authentication from '../authentication.js';
 
 class JoinPage extends React.Component {
 
@@ -73,7 +74,7 @@ class JoinPage extends React.Component {
     }
     else{
       self.setState({showSpinner: true});
-      self.props.onJoin(self.state.user.userName, self.state.user.password, self.state.user.email, function(err, data){
+      Authentication.join(self.state.user.userName, self.state.user.password, self.state.user.email, function(err, data){
         if (err){
             if (err.message === 'Invalid email address format.'){
               self.setState({errorEmail: true, showSpinner: false, errorMessage: "The email address you provided is not in a valid format."});

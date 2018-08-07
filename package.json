@@ -1,6 +1,6 @@
 {
   "name": "react-shared-services",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "build/index.js",
   "repository": "https://github.com/cdellinger/react-shared-services.git",
   "author": "Chris Dellinger <cdellinger@gmail.com>",

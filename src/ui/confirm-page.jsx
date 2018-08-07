@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
+import Authentication from '../authentication.js';
 
 class ConfirmPage extends React.Component {
 
@@ -49,7 +49,7 @@ class ConfirmPage extends React.Component {
     else{
       self.setState({showSpinner: true});
 
-      self.props.onConfirm(self.state.user.userName, self.state.user.code, function(err, data){
+      Authentication.confirm(self.state.user.userName, self.state.user.code, function(err, data){
         if (err){
           if (err.message === 'User cannot be confirm. Current status is CONFIRMED'){
             self.setState({showSpinner: false, errorMessage: "This user has already been confirmed."});
